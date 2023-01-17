@@ -1,4 +1,4 @@
-accession	filePath	label	name	lab
+ID	filePath	label	name	lab
 ENCFF582SNT	./example_CTCF/beds/ENCFF582SNT.bed	K562	K562 (DS0,f0)	Richard Myers, HAIB
 ENCFF362OPG	./example_CTCF/beds/ENCFF362OPG.bed	K562	K562 (DS1,f0)	Bradley Bernstein, Broad
 ENCFF736NYC	./example_CTCF/beds/ENCFF736NYC.bed	K562	K562 (DS2,f0)	John Stamatoyannopoulos, UW
