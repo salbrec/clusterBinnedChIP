@@ -58,9 +58,10 @@ profiles = pd.read_csv(args.profiles, sep='\t')
 dist_tab_file = '%sdistances_on_%s.tsv'%(out_dir, args.type)
 working_dir = getcwd() + '/'
 script_dir = utils.get_path_to_filename(abspath(argv[0]))
+messages = utils.get_messages()
 
+print()
 bins_map = {}
-binning_times = []
 if args.type == 'bins':
     type_descr += '_%s_%s'%(args.genome, args.size)
     if args.size == 'None' or args.genome == 'None':
@@ -71,25 +72,29 @@ if args.type == 'bins':
         makedirs(bins_dir)
     dist_tab_file = '%sdistances_on_%s_%s_%s.tsv'%(out_dir, args.type, args.genome, args.size)
     if not exists(dist_tab_file):
+        print(messages['comp_dists'])
+        applied_binning = False
         for pi1, pr1 in profiles.iterrows():
             bins_file = '%s%s.pickle'%(bins_dir,pr1['ID'])
             if exists(bins_file):
                 bins_map[pr1['ID']] = pickle.load(open(bins_file, 'rb'))
             else:
-                chr_sizes_file = '%sutils/%s.tsv'%(script_dir, args.genome)
+                if not applied_binning:
+                    print(messages['comp_bins'])
+                    applied_binning = True
                 start_time = time.time()
+                chr_sizes_file = '%sutils/%s.tsv'%(script_dir, args.genome)
                 bins, max_bin_ID, position_map = utils.get_bins_from_file(pr1['filePath'],
                     chr_sizes_file, args.size)
-                binning_times.append( time.time() - start_time )
                 pickle.dump(bins, open(bins_file, 'wb'))
                 bins_map[pr1['ID']] = bins
-                print('# bins:', len(bins), binning_times[-1])
-print('The binning took in total %.5f seconds'%(sum(binning_times)))
-print('This is on average %.5f seconds per file'%(np.mean(binning_times)))
-
+                print('Binning was applyed to %s. It took %.2f seconds.'%(pr1['filePath'],
+                    time.time() - start_time))
 
 distances_tab = {'pair':[], 'distance':[]}
+print('\n\n')
 if not exists(dist_tab_file):
+    print(messages['comp_dists'])
     for pi1, pr1 in profiles.iterrows():
         for pi2, pr2 in profiles.iterrows():
             # the distances used are metrics and it we have that d(u,v) = d(v,u)
@@ -107,11 +112,14 @@ if not exists(dist_tab_file):
             if len(distances_tab['pair']) % 100 == 0:
                 print('... %d distances were computed ...'%(len(distances_tab['pair'])))
     pd.DataFrame(distances_tab).to_csv(dist_tab_file, sep='\t', index=False)
+    print('Done with computing distances, they are now available under:', dist_tab_file)
 else:
+    print('Distances have already been computed and are used from the file:', dist_tab_file)
     distances_tab = pd.read_csv(dist_tab_file, sep='\t')
 distance_map = dict(zip( distances_tab['pair'], distances_tab['distance'] ))
 
-
+# here the pre-computed distances are summarized in the right data structure
+# as it is expected by the seaborn clustermap function
 dists, indices = {}, []
 for pi1, pr1 in profiles.iterrows():
     indices.append(pr1['name'])
@@ -119,17 +127,31 @@ for pi1, pr1 in profiles.iterrows():
     for pi2, pr2 in profiles.iterrows():
         pair = utils.get_ID_pair(pr1['ID'], pr2['ID'])
         dists_temp_row.append( distance_map[pair] )
-
     dists[pr1['name']] = dists_temp_row
 dists = pd.DataFrame(dists, index=indices)
 
+# creating the clustermap based on single-linkage agglomerative clustering
 plt.figure(figsize=(4, 4))
 cm = clustermap(dists, linewidth=3, method='single',
     cmap='Blues_r', col_cluster=True, row_cluster=True,
     xticklabels=True, yticklabels=True)
-plt.savefig('%sclustermap_%s.png'%(out_dir,type_descr))
+# a png is created for the clustermap
+cluster_map_file = '%sclustermap_%s.png'%(out_dir,type_descr)
+plt.savefig(cluster_map_file)
+print('\nClustermap was created and saved into', cluster_map_file)
 
-eval_clustering = True
+# depending on the availability of labels for the given profiles,
+# the clustering is done again but now validated with common evaluation metrics
+print()
+eval_clustering = False
+if not 'label' in profiles.columns:
+    print('Skipping the clustering evaluation because profiles are not labeled.')
+    print('(the provided table in "%s" has no column "label")\n\n'%(args.profiles))
+elif len(set(profiles['label'])) > 1:
+    eval_clustering = True
+else:
+    print('Skipping the clustering evaluation because all profiles are from the same label.\n\n')
+
 if eval_clustering:
     label_names = list(profiles['label'])
     uniq_labels = list(set(label_names))
@@ -144,7 +166,13 @@ if eval_clustering:
     hos = metrics.homogeneity_score(true_labels, pred_labels)
     cos = metrics.completeness_score(true_labels, pred_labels)
 
-    print(' '.join(map(lambda x: '%.3f'%(x), [ami,ari,hos,cos])))
+    print('''Applied agglomerative single-linkage clustering and evaluated its quality.
+The following measures represent the clustering quality:\n''')
+    print('\tAdjusted Mutual Information: %.5f'%(ami))
+    print('\tAdjusted Rand Index:         %.5f'%(ari))
+    print('\tHomogeneity Score:           %.5f'%(hos))
+    print('\tCompleteness Score:          %.5f'%(cos))
+    print('\n')
 
 
 

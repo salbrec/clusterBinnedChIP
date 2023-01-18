@@ -72,3 +72,14 @@ def get_bins_from_file(bed_file, chr_sizes_file, size):
 def get_path_to_filename(fn):
     return fn[:-fn[::-1].find('/')]
 
+def get_messages():
+    messages = {}
+    messages['comp_dists'] = '''
+Distances have not been computed, yet. This will be done now, this step might take a
+few minutes when using the peaks. Time for a coffee, tea or mate?\n'''
+    messages['comp_bins'] = '''
+Some profiles are not available as binned profile, yet. Starting to apply the binning
+to some (potentially all) profiles. This might take a few minutes. On 5kb resolution
+it takes approx. 30 seconds for binning one profile. Time for a coffee, tea or mate?\n'''
+    return messages
+
