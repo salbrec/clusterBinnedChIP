@@ -42,10 +42,10 @@ argsParser.add_argument('--profiles', '-p', type=str, required=True, help='''Inp
 argsParser.add_argument('--type', '-t', type=str, default='peaks', choices=['peaks','bins'],
     help='''Profile type which is either "peaks" or "bins". When using bins, the
     parameters "--size" and "--genome" are required.''')
-argsParser.add_argument('--size', '-s', type=str, default='None', help='''Must be used to specify the bin size
-    when using "bins" as profile type. Sizes are given in kb or bp, for eexample "500bp" or  "2kb".''')
+argsParser.add_argument('--size', '-s', type=str, default='None', help='''Must be used when using "bins" as profile type.
+    It is used to specify the bin size. Sizes are given in kb or bp, for eexample "500bp" or  "2kb".''')
 argsParser.add_argument('--genome', '-g', type=str, default='None', choices=['GRCh38','GRCm38'],
-    help='''Must be used to specify the bin size. Sizes are given in kb or bp, for eexample "500bp" or  "2kb".''')
+    help='''Must be used when using "bins" as profile type. The parameter defines the reference genome for the binning.''')
 argsParser.add_argument('--output', '-o', type=str, default='./output/', help='''Specify the output folder.
     This folder folder will then contain the clustermaps, possibly also a subfolder for bins, etc.''')
 
