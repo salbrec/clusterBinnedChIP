@@ -36,7 +36,7 @@ You can use *bedtools* to sort your peak files (see [here](https://bedtools.read
 
 It can take a moment to derive the bins from the provided peak files. Based on the CTCF example provided here, we observed on average approx. 30 seconds per profile for a 5kb binning. Hence, approx. 20 minutes for 40 profiles. For the binning on 2kb resolution the time increases to approx. 1 minute per profile. 
 
-However, once the bins are derived from the peaks, computing the Jaccard-Distance it much faster compared to computing the Jaccard-Distance on the peak files.
+However, once the bins are derived from the peaks, computing the Jaccard-Distance it much faster compared to computing the Jaccard-Distance between peak files.
 
 Runtimes were measured on a local machine with an Intel(R) Core(TM) i7-10510U CPU @ 1.80GHz   2.30 GHz.
 
