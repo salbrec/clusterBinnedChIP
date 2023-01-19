@@ -25,13 +25,13 @@ The script takes a table in tsv format in which the profiles are described toget
 With the following line one can create a clustermap based on the peaks. Jaccard-Distances are automatically computed. 
 
 ```
-python binNclusterChIP -p CTCF_files.tsv -t peaks -o ./example_CTCF/
+python binNclusterChIP.py -p CTCF_files.tsv -t peaks -o ./example_CTCF/
 ```
 
 When using bins, one has to define the reference genome and the bin size:
 
 ```
-binNclusterChIP -p CTCF_files.tsv -t bins -g GRCh38 -s 5kb -o ./example_CTCF/
+python binNclusterChIP.py -p CTCF_files.tsv -t bins -g GRCh38 -s 5kb -o ./example_CTCF/
 ```
 
 **BED files must ALWAYS be SORTED before running the script!** 
