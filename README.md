@@ -54,6 +54,8 @@ However, once the bins are derived from the peaks, computing the Jaccard-Distanc
 
 Runtimes were measured on a local machine with an Intel(R) Core(TM) i7-10510U CPU @ 1.80GHz 2.30 GHz.
 
+Note that the runtime strongly depends on the CPU of your machine. Another test, we ran on the provided CTCF example, showed that the **5kb binning** can be done within **less than 15 seconds per profile** when using a single thread of an AMD Ryzen™ 9 5900X
+
 ## Installation Guidelines
 
 The code is written in Python for Linux systems. Indeed, everything was developed under WSL (Windows Subsystem for Linux) which we highly recommend for Windows users.
