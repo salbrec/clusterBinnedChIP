@@ -38,6 +38,14 @@ python binNclusterChIP.py -p CTCF_files.tsv -t bins -g GRCh38 -s 5kb -o ./exampl
 
 You can use *bedtools* to sort your peak files (see [here](https://bedtools.readthedocs.io/en/latest/content/tools/sort.html))
 
+### Expected Output
+
+The script produces a *clustermap* describing the result of the hierarchical clustering. Here the *clustermap* as a result of the second example run:
+
+<img src="utils/readme/clustermap_bins_GRCh38_5kb.png" width="800">
+
+An example for the text printed to *stdout* is provided by this LOG file: [./example_CTCF/LOG.txt](./example_CTCF/LOG.txt)
+
 ## Runtime
 
 It can take a moment to derive the bins from the provided peak files. Based on the CTCF example provided here, we observed on average approx. 30 seconds per profile for a 5kb binning. Hence, approx. 20 minutes for 40 profiles. For the binning on 2kb resolution the time increases to approx. 1 minute per profile. 
