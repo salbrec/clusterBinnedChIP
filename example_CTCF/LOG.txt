@@ -1,0 +1,79 @@
+
+
+Distances have not been computed, yet. This will be done now, this step might take a
+few minutes when using the peaks. Time for a coffee, tea or mate?
+
+
+Some profiles are not available as binned profile, yet. Starting to apply the binning
+to some (potentially all) profiles. This might take a few minutes. On 5kb resolution
+it takes approx. 30 seconds for binning one profile. Time for a coffee, tea or mate?
+
+Binning was applyed to ./example_CTCF/beds/ENCFF582SNT.bed. It took 14.16 seconds.
+Binning was applyed to ./example_CTCF/beds/ENCFF362OPG.bed. It took 11.86 seconds.
+Binning was applyed to ./example_CTCF/beds/ENCFF736NYC.bed. It took 12.71 seconds.
+Binning was applyed to ./example_CTCF/beds/ENCFF089FZZ.bed. It took 12.61 seconds.
+Binning was applyed to ./example_CTCF/beds/ENCFF740TLU.bed. It took 13.53 seconds.
+Binning was applyed to ./example_CTCF/beds/ENCFF221SKA.bed. It took 16.76 seconds.
+Binning was applyed to ./example_CTCF/beds/ENCFF660GHM.bed. It took 16.33 seconds.
+Binning was applyed to ./example_CTCF/beds/ENCFF096ZTD.bed. It took 10.21 seconds.
+Binning was applyed to ./example_CTCF/beds/ENCFF827JRI.bed. It took 14.30 seconds.
+Binning was applyed to ./example_CTCF/beds/ENCFF770BRI.bed. It took 11.53 seconds.
+Binning was applyed to ./example_CTCF/beds/ENCFF138REW.bed. It took 11.46 seconds.
+Binning was applyed to ./example_CTCF/beds/ENCFF951PEM.bed. It took 12.00 seconds.
+Binning was applyed to ./example_CTCF/beds/ENCFF797SDL.bed. It took 12.09 seconds.
+Binning was applyed to ./example_CTCF/beds/ENCFF205OKL.bed. It took 13.09 seconds.
+Binning was applyed to ./example_CTCF/beds/ENCFF199YFA.bed. It took 16.28 seconds.
+Binning was applyed to ./example_CTCF/beds/ENCFF119PKI.bed. It took 13.66 seconds.
+Binning was applyed to ./example_CTCF/beds/ENCFF240MUS.bed. It took 12.06 seconds.
+Binning was applyed to ./example_CTCF/beds/ENCFF948CYD.bed. It took 16.97 seconds.
+Binning was applyed to ./example_CTCF/beds/ENCFF198YOJ.bed. It took 16.64 seconds.
+Binning was applyed to ./example_CTCF/beds/ENCFF163JHE.bed. It took 15.95 seconds.
+Binning was applyed to ./example_CTCF/beds/ENCFF596MGE.bed. It took 15.21 seconds.
+Binning was applyed to ./example_CTCF/beds/ENCFF683EEW.bed. It took 17.65 seconds.
+Binning was applyed to ./example_CTCF/beds/ENCFF721XKI.bed. It took 10.73 seconds.
+Binning was applyed to ./example_CTCF/beds/ENCFF278FNP.bed. It took 15.22 seconds.
+Binning was applyed to ./example_CTCF/beds/ENCFF023LAA.bed. It took 15.38 seconds.
+Binning was applyed to ./example_CTCF/beds/ENCFF030QAM.bed. It took 10.70 seconds.
+Binning was applyed to ./example_CTCF/beds/ENCFF111RWV.bed. It took 12.04 seconds.
+Binning was applyed to ./example_CTCF/beds/ENCFF548ARU.bed. It took 16.28 seconds.
+Binning was applyed to ./example_CTCF/beds/ENCFF723DCX.bed. It took 12.55 seconds.
+Binning was applyed to ./example_CTCF/beds/ENCFF005MCX.bed. It took 12.04 seconds.
+Binning was applyed to ./example_CTCF/beds/ENCFF467CVV.bed. It took 11.56 seconds.
+Binning was applyed to ./example_CTCF/beds/ENCFF245RYN.bed. It took 11.35 seconds.
+Binning was applyed to ./example_CTCF/beds/ENCFF337ZMK.bed. It took 11.41 seconds.
+Binning was applyed to ./example_CTCF/beds/ENCFF624ZSR.bed. It took 11.62 seconds.
+Binning was applyed to ./example_CTCF/beds/ENCFF608JKY.bed. It took 14.99 seconds.
+Binning was applyed to ./example_CTCF/beds/ENCFF244QKO.bed. It took 15.92 seconds.
+Binning was applyed to ./example_CTCF/beds/ENCFF670ULH.bed. It took 10.07 seconds.
+Binning was applyed to ./example_CTCF/beds/ENCFF832INR.bed. It took 14.52 seconds.
+Binning was applyed to ./example_CTCF/beds/ENCFF273SBR.bed. It took 10.38 seconds.
+Binning was applyed to ./example_CTCF/beds/ENCFF803RIY.bed. It took 15.87 seconds.
+
+
+
+
+Distances have not been computed, yet. This will be done now, this step might take a
+few minutes when using the peaks. Time for a coffee, tea or mate?
+
+... 100 distances were computed ...
+... 200 distances were computed ...
+... 300 distances were computed ...
+... 400 distances were computed ...
+... 500 distances were computed ...
+... 600 distances were computed ...
+... 700 distances were computed ...
+... 800 distances were computed ...
+Done with computing distances, they are now available under: ./example_CTCF/distances_on_bins_GRCh38_5kb.tsv
+
+Clustermap was created and saved into ./example_CTCF/clustermap_bins_GRCh38_5kb.png
+
+Applied agglomerative single-linkage clustering and evaluated its quality.
+The following measures represent the clustering quality:
+
+        Adjusted Mutual Information: 0.71229
+        Adjusted Rand Index:         0.58074
+        Homogeneity Score:           0.79349
+        Completeness Score:          0.85689
+
+
+
